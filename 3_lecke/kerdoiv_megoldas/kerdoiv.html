@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Háziállatok kérdőív</title>
+    </head>
+    <body>
+        <h1>Háziállatok kérdőív</h1>
+        <form id="pet_form">
+            <section></section>
+            <fieldset>
+                <legend><b>1. Kérdés</b></legend>
+                <p>Mi a háziállatod neve?</p>
+                <input type="text" name="pet_name" required />
+            </fieldset>
+            <fieldset>
+                <legend><b>2. Kérdés</b></legend>
+                <p>Milyen háziállatod van?</p>
+                <select name="pet_type">
+                    <option>Kutya</option>
+                    <option>Macska</option>
+                    <option>Nyúl</option>
+                    <option>Tengerimalac</option>
+                    <option>Papagáj</option>
+                    <option>Egyéb</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend><b>3. Kérdés</b></legend>
+                <p>Milyen gyakran sétáltatod / kirándulsz kedvenceddel?</p>
+                <table width="100%" style="text-align: center">
+                    <tr>
+                        <th rowspan="2">Gyakoriság</th>
+                        <td><label for="walk_frequency_1">Sohasem</label></td>
+                        <td><label for="walk_frequency_2">Naponta</label></td>
+                        <td><label for="walk_frequency_4">Heti egyszer</label></td>
+                        <td><label for="walk_frequency_3">Heti többször</label></td>
+                        <td><label for="walk_frequency_5">Havi egyszer</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="walk_frequency" value="0" id="walk_frequency_1" required /></td>
+                        <td><input type="radio" name="walk_frequency" value="1" id="walk_frequency_2" required /></td>
+                        <td><input type="radio" name="walk_frequency" value="2" id="walk_frequency_3" required /></td>
+                        <td><input type="radio" name="walk_frequency" value="3" id="walk_frequency_4" required /></td>
+                        <td><input type="radio" name="walk_frequency" value="4" id="walk_frequency_5" required /></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend><b>4. Kérdés</b></legend>
+                <p>Mit szoktál csinálni a kedvenceddel heti szinten?</p>
+                <input type="checkbox" name="weekly_todos" value="play" id="weekly_todos_1" />
+                <label for="weekly_todos_1">Játszok vele</label>
+                <br />
+                <input type="checkbox" name="weekly_todos" value="walk" id="weekly_todos_2" />
+                <label for="weekly_todos_2">Sétálok vele</label>
+                <br />
+                <input type="checkbox" name="weekly_todos" value="feed" id="weekly_todos_3" />
+                <label for="weekly_todos_3">Megetetem</label>
+                <br />
+                <input type="checkbox" name="weekly_todos" value="drink" id="weekly_todos_4" />
+                <label for="weekly_todos_4">Megitatom</label>
+                <br />
+                <input type="checkbox" name="weekly_todos" value="clean" id="weekly_todos_5" />
+                <label for="weekly_todos_5">Kitisztítom az almot</label>
+            </fieldset>
+            <fieldset>
+                <legend><b>5. Kérdés</b></legend>
+                <p>Tölts fel egy képet a háziállatodról:</p>
+                <label for="file">Fájl feltöltése:</label>
+                <input type="file" name="picture" id="file" required />
+            </fieldset>
+            <fieldset>
+                <legend><b>6. Kérdés</b></legend>
+                <p>Van valami, amit esetleg szeretnél még elmondani a háziállatodról?</p>
+                <textarea name="description" placeholder="A kiskedvencem nagyon szereti, ha ..." cols="70" rows="3" maxlength="400"></textarea>
+            </fieldset>
+            <button type="submit">Beküldés</button>
+            <button type="reset">Válaszok törlése</button>
+        </form>
+        <script>
+            function results(evt) {
+                let result = [...new FormData(evt.target)].map((pair) => pair.join(": ")).join(" | ");
+                alert(result);
+            }
+
+            const form = document.getElementById("pet_form");
+            form.addEventListener("submit", results);
+        </script>
+    </body>
+</html>
